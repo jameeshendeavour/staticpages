@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>nSpire 3D</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+.mapboxgl-popup {
+max-width: 400px;
+font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+<div id="map"></div>
+</body>
+<script>
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiYnJlYW5kYW43NzciLCJhIjoiY2txa29tb2U0MDFuZTJ2cHB4NXA1MDIyYSJ9.9J7GrN78CXE9yA60KfIXlg';
+
+var geojson =
+{
+"type": "FeatureCollection",
+"features": [
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -111</p>',  "address": "West", "colour": 4, "min_height": 20.0, "height": 25.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95505,1.33555 ], [ 103.95505,1.33545 ], [ 103.95495,1.33545 ], [ 103.95495,1.33555 ], [ 103.95505,1.33555 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -123</p>',  "address": "West", "colour": 4, "min_height": 15.0, "height": 20.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95395,1.33485 ], [ 103.95395,1.33475 ], [ 103.95385,1.33475 ], [ 103.95385,1.33485 ], [ 103.95395,1.33485 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>007<br> <strong>Avg RSRP:</strong> -112</p>',  "address": "West", "colour": 4, "min_height": 10.0, "height": 15.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95405,1.33495 ], [ 103.95405,1.33485 ], [ 103.95395,1.33485 ], [ 103.95395,1.33495 ], [ 103.95405,1.33495 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -112</p>',  "address": "West", "colour": 4, "min_height": 15.0, "height": 20.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95435,1.33415 ], [ 103.95435,1.33405 ], [ 103.95425,1.33405 ], [ 103.95425,1.33415 ], [ 103.95435,1.33415 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -114</p>',  "address": "West", "colour": 4, "min_height": 15.0, "height": 20.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95505,1.33525 ], [ 103.95505,1.33515 ], [ 103.95495,1.33515 ], [ 103.95495,1.33525 ], [ 103.95505,1.33525 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -118</p>',  "address": "West", "colour": 4, "min_height": 20.0, "height": 25.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95435,1.33505 ], [ 103.95435,1.33495 ], [ 103.95425,1.33495 ], [ 103.95425,1.33505 ], [ 103.95435,1.33505 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -111</p>',  "address": "West", "colour": 4, "min_height": 15.0, "height": 20.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95405,1.33455 ], [ 103.95405,1.33445 ], [ 103.95395,1.33445 ], [ 103.95395,1.33455 ], [ 103.95405,1.33455 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -114</p>',  "address": "West", "colour": 4, "min_height": 10.0, "height": 15.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95375,1.33465 ], [ 103.95375,1.33455 ], [ 103.95365,1.33455 ], [ 103.95365,1.33465 ], [ 103.95375,1.33465 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -113</p>',  "address": "West", "colour": 4, "min_height": 10.0, "height": 15.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95345,1.33485 ], [ 103.95345,1.33475 ], [ 103.95335,1.33475 ], [ 103.95335,1.33485 ], [ 103.95345,1.33485 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -112</p>',  "address": "West", "colour": 4, "min_height": 30.0, "height": 35.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95385,1.33435 ], [ 103.95385,1.33425 ], [ 103.95375,1.33425 ], [ 103.95375,1.33435 ], [ 103.95385,1.33435 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -111</p>',  "address": "West", "colour": 4, "min_height": 5.00, "height": 10.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95515,1.33345 ], [ 103.95515,1.33335 ], [ 103.95505,1.33335 ], [ 103.95505,1.33345 ], [ 103.95515,1.33345 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -112</p>',  "address": "West", "colour": 4, "min_height": 15.0, "height": 20.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95525,1.33355 ], [ 103.95525,1.33345 ], [ 103.95515,1.33345 ], [ 103.95515,1.33355 ], [ 103.95525,1.33355 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -114</p>',  "address": "West", "colour": 4, "min_height": 0.00, "height": 5.00, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95335,1.33485 ], [ 103.95335,1.33475 ], [ 103.95325,1.33475 ], [ 103.95325,1.33485 ], [ 103.95335,1.33485 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -112</p>',  "address": "West", "colour": 4, "min_height": 30.0, "height": 35.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95495,1.33555 ], [ 103.95495,1.33545 ], [ 103.95485,1.33545 ], [ 103.95485,1.33555 ], [ 103.95495,1.33555 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -111</p>',  "address": "West", "colour": 4, "min_height": 15.0, "height": 20.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95335,1.33485 ], [ 103.95335,1.33475 ], [ 103.95325,1.33475 ], [ 103.95325,1.33485 ], [ 103.95335,1.33485 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -112</p>',  "address": "West", "colour": 4, "min_height": 20.0, "height": 25.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95505,1.33375 ], [ 103.95505,1.33365 ], [ 103.95495,1.33365 ], [ 103.95495,1.33375 ], [ 103.95505,1.33375 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -118</p>',  "address": "West", "colour": 4, "min_height": 15.0, "height": 20.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95465,1.33515 ], [ 103.95465,1.33505 ], [ 103.95455,1.33505 ], [ 103.95455,1.33515 ], [ 103.95465,1.33515 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -111</p>',  "address": "West", "colour": 4, "min_height": 0.00, "height": 5.00, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95545,1.33555 ], [ 103.95545,1.33545 ], [ 103.95535,1.33545 ], [ 103.95535,1.33555 ], [ 103.95545,1.33555 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>003<br> <strong>Avg RSRP:</strong> -114</p>',  "address": "West", "colour": 4, "min_height": 20.0, "height": 25.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95385,1.33455 ], [ 103.95385,1.33445 ], [ 103.95375,1.33445 ], [ 103.95375,1.33455 ], [ 103.95385,1.33455 ] ] ] } },
+{ "type": "Feature", "properties": {'description': '<strong>Details:</strong><p> <strong>Sub Count: </strong>001<br> <strong>Avg RSRP:</strong> -111</p>',  "address": "West", "colour": 4, "min_height": 5.00, "height": 10.0, "minx":103.95225, "miny":1.33235, "maxx":103.95665, "maxy":1.33705 }, "geometry": { "type": "Polygon", "coordinates": [ [ [103.95505,1.33355 ], [ 103.95505,1.33345 ], [ 103.95495,1.33345 ], [ 103.95495,1.33355 ], [ 103.95505,1.33355 ] ] ] } },
+
+]
+}
+;
+
+
+var bounds = [[geojson.features[0].properties.minx,geojson.features[0].properties.miny],
+			  [geojson.features[0].properties.maxx,geojson.features[0].properties.maxy]];
+
+var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/dark-v10',
+        maxBounds: bounds,
+		pitch: 70,
+    	});
+
+map.addControl(new mapboxgl.NavigationControl());
+
+map.on('load', function () {
+
+map.addSource('geojson', {
+  'type': 'geojson',
+  'data': geojson
+  });
+
+map.addLayer({
+id: 'geojson',
+type: 'fill-extrusion',
+source: 'geojson',
+paint: {
+'fill-extrusion-color': [
+  "step",
+  ["get", "colour"],
+  "#808080",
+  1,
+  "#0000FF",
+  2,
+  "#00FF00",
+  3,
+  "#FFFF00",
+  4,
+  "#FF0000"
+],
+'fill-extrusion-height': [
+  "interpolate",
+  ["linear"],
+  ["get", "height"],
+  3,
+  3,
+  117,
+  117
+],
+'fill-extrusion-base': [
+  "interpolate",
+  ["linear"],
+  ["get", "min_height"],
+  3,
+  3,
+  117,
+  117
+],
+'fill-extrusion-opacity': 0.95
+        }
+});
+
+map.addSource('mapbox-dem', {
+'type': 'raster-dem',
+'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+'tileSize': 512,
+'maxzoom': 14
+});
+// add the DEM source as a terrain layer with exaggerated height
+// map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1 });  // It is noticed that when terrain is enabled, it shifts the extrusion of the polygons and causing overlaps etc which dont render correctly - recommmend not enabling for the moment
+
+// Change the cursor to a pointer when
+// the mouse is over the building layer.
+map.on('mouseenter', 'geojson', () => {
+map.getCanvas().style.cursor = 'pointer';
+});
+
+// Change the cursor back to a pointer
+// when it leaves the building layer.
+map.on('mouseleave', 'geojson', () => {
+map.getCanvas().style.cursor = '';
+});
+
+// When a click event occurs on a feature in the states layer,
+// open a popup at the location of the click, with description
+// HTML from the click event's properties.
+map.on('click', 'geojson', (e) => {
+new mapboxgl.Popup()
+.setLngLat(e.lngLat)
+.setHTML(e.features[0].properties.description)
+.addTo(map);
+});
+
+// add a sky layer that will show when the map is highly pitched
+//map.addLayer({
+//'id': 'sky',
+//'type': 'sky',
+//'paint': {
+//'sky-type': 'atmosphere',
+//'sky-atmosphere-sun': [0.0, 0.0],
+//'sky-atmosphere-sun-intensity': 15
+//}
+//});
+
+});
+
+
+</script>
+</html>
